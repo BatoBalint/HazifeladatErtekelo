@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\User;
 
 class HomeworkFactory extends Factory
 {
@@ -14,7 +15,7 @@ class HomeworkFactory extends Factory
     public function definition()
     {
         return [
-            'student' => User::random(),
+            'student' => User::all()->random(),
             'url' => $this->faker->url(),
             'review' => '',
             'grade' => 0
