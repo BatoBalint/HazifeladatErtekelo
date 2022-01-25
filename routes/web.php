@@ -2,6 +2,7 @@
 
 use App\Models\Homework;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeworkController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    $homeworks = Homework::all();
-    return view('welcome', ['homeworks' => $homeworks]);
-});
+Route::get('/', [ HomeworkController::class, 'index' ]);
+
+Route::resource('/homework', HomeworkController::class);
