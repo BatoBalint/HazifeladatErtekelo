@@ -40,7 +40,8 @@ class HomeworkController extends Controller
     {
         $data = $request->only(['student', 'url']);
         $validated = $request->validate([
-            'url' => 'required|max:255'
+            'url' => 'required|max:255',
+            'student' => 'required'
         ]);
 
         if ($validated) {
