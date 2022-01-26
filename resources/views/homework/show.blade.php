@@ -26,12 +26,21 @@
                         <input type="text" class="form-control" name="review" value="{{ $homework->review }}">
                         <div class="col-sm-1">
                             <select class="form-select text-dark bg-secondary" name="grade">
-                                <option value="0"> </option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
+                                @for ($i = 0; $i < 6; $i++)
+                                    @if($homework->grade == $i)
+                                    <option selected="true" value="{{ $i }}">
+                                        @if($i != 0)
+                                        {{ $i }}
+                                        @endif
+                                    </option>
+                                    @else
+                                    <option value="{{ $i }}">
+                                        @if($i != 0)
+                                        {{ $i }}
+                                        @endif
+                                    </option>
+                                    @endif
+                                @endfor
                             </select>
                         </div>
                     </div>
