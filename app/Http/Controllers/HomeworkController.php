@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Homework;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeworkController extends Controller
@@ -25,7 +26,8 @@ class HomeworkController extends Controller
      */
     public function create()
     {
-        return view('homework.create');
+        $users = User::orderBy('name')->get();
+        return view('homework.create', ['users' => $users]);
     }
 
     /**
@@ -45,7 +47,7 @@ class HomeworkController extends Controller
             $homework = new Homework();
             $homework->fill($data);
             $homework->save();
-            return view('homework.index');
+            return redirect()->route('homework.index');
         } else {
             return view('homework.create');
         }

@@ -11,7 +11,24 @@
     <div class="container">
         <div class="row mt-5">
             <div class="col-ms-8 mx-auto">
-                Lajos
+                <form method="POST" action="{{ route('homework.store') }}">
+                    @csrf
+                    <label for="user" class="form-label">Diák:</label>
+                    <div class="col-sm-4 mb-5">
+                        <select class="form-select text-dark" name="student">
+                                <option value="0"> </option>
+                                @foreach($users as $user)
+
+                                <option value="{{ $user->id }}">{{ $user->name }}</option>
+
+                                @endforeach
+                        </select>
+                    </div>
+                   
+                    <label for="review" class="form-label mb-2">URL:</label>
+                    <input type="text" class="form-control mb-5" name="url">
+                    <input class="btn btn-success" type="submit" value="Mentés">
+                </form>
             </div>
         </div>
     </div>
