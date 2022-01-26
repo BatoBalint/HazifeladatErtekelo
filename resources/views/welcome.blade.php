@@ -19,7 +19,7 @@
 </style>
 
 <body class="bg-dark text-white">
-    <div style="width: 100%;">
+    <div style="width: 100%;" class="pb-5">
         <div style="float: right; margin: 10px 10px">
             <a href="{{ route('homework.create') }}" class="btn btn-success">Új házifeladat felvétele</a>
         </div>

@@ -17,7 +17,7 @@ class CreateHomeworkTable extends Migration
             $table->id();
             $table->integer('student');
             $table->string('url');
-            $table->string('review')->default("");
+            $table->string('review')->default("")->nullable();
             $table->integer('grade')->default(0);
             $table->timestamps();
         });

@@ -14,8 +14,13 @@
     }
 </style>
 <body class="bg-dark text-white">
+    <div style="width: 100%;" class="pb-5">
+        <div style="float: right; margin: 10px 10px">
+            <a href="{{ route('homework.index') }}" class="btn btn-danger">Vissza a főoldalra</a>
+        </div>
+    </div>
     <div class="container">
-        <div class="row mt-5">
+        <div class="row">
             <div class="col-ms-8 mx-auto">
                 <form method="POST" action="{{ route('homework.store') }}">
                     @csrf
