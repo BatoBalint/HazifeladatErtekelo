@@ -12,7 +12,26 @@
         <div class="row mt-5">
             <div class="col-md-8 mx-auto">
                 <h1>{{ $homework->studentInfo->name }}</h1>
-                <p>Beadott link: <a href="{{ $homework->url }}">{{ $homework->url }}</a> </p>
+                <h3>Beadott link: <span class="h4"><a href="{{ $homework->url }}">{{ $homework->url }}</a> </span></h3>
+                <form method="POST" action="{{ route('homework.update', $homework->id) }}">
+                @method('PATCH')    
+                @csrf
+                    <label for="review" class="form-label">Értékelés</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" name="review" value="{{ $homework->review }}">
+                        <div class="col-sm-1">
+                            <select class="form-select text-dark" name="grade">
+                                <option value="0"> </option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <input class="btn btn-success" type="submit" value="Mentés">
+                </form>
             </div>
         </div>
     </div>

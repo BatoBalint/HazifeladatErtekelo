@@ -20,20 +20,28 @@
             <div class="col mt-5">
             <table class="table table-dark table-striped table-hover" cellspacing=0>
                 <tr>
-                    <th>Diák</th>
-                    <th>URL</th>
-                    <th>Szöveges értékelés</th>
-                    <th>Jegy</th>
+                    <th style="width: 20%;">Diák</th>
+                    <th style="width: 10%;">URL</th>
+                    <th style="width: 60%;">Szöveges értékelés</th>
+                    <th style="width: 5%;">Jegy</th>
+                    <th style="width: 5%;"></th>
                 </tr>
                 @foreach($homeworks as $homework)
-                <tr data-href="{{ route('homework.show', $homework->id) }}">
-                    <td>{{ $homework->studentInfo->name }}</td>
-                    <td><a class="link-info" href="{{ $homework->url }}">Link</a></td>
-                    <td>{{ $homework->review }}</td>
-                    <td>
+                <tr>
+                    <td data-href="{{ route('homework.show', $homework->id) }}">{{ $homework->studentInfo->name }}</td>
+                    <td data-href="{{ route('homework.show', $homework->id) }}"><a class="link-info" href="{{ $homework->url }}">Link</a></td>
+                    <td data-href="{{ route('homework.show', $homework->id) }}">{{ $homework->review }}</td>
+                    <td data-href="{{ route('homework.show', $homework->id) }}">
                         @if($homework->grade != 0) 
                             {{ $homework->grade }} 
                         @endif
+                    </td>
+                    <td>
+                        <form method="POST" action="{{ route('homework.destroy', $homework->id) }}">
+                            @csrf
+                            @method('DELETE')
+                            <input type="submit" value="X" class="btn-danger">
+                        </form>
                     </td>
                 </tr>
                 @endforeach
@@ -44,7 +52,7 @@
 </body>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        let rows = document.querySelectorAll("tr[data-href]");
+        let rows = document.querySelectorAll("td[data-href]");
 
         rows.forEach(row => {
             row.addEventListener('click', () => {

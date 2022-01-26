@@ -70,7 +70,10 @@ class HomeworkController extends Controller
      */
     public function update(Request $request, Homework $homework)
     {
-        //
+        $data = $request->only(['review', 'grade']);
+        $homework->fill($data);
+        $homework->save();
+        return redirect()->route('homework.index');
     }
 
     /**
@@ -81,6 +84,7 @@ class HomeworkController extends Controller
      */
     public function destroy(Homework $homework)
     {
-        //
+        $homework->delete();
+        return redirect()->route('homework.index');
     }
 }
