@@ -12,9 +12,18 @@
     td:hover {
         cursor: pointer;
     }
+
+    .right {
+        float: right;
+    }
 </style>
 
 <body class="bg-dark text-white">
+    <div style="width: 100%;">
+        <div style="float: right; margin: 10px 10px">
+            <a href="{{ route('homework.create') }}" class="btn btn-success">Új házifeladat felvétele</a>
+        </div>
+    </div>
     <div class="container">
         <div class="row">
             <div class="col mt-5">

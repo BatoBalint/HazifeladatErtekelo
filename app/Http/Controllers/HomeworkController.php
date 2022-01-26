@@ -25,7 +25,7 @@ class HomeworkController extends Controller
      */
     public function create()
     {
-        //
+        return view('homework.create');
     }
 
     /**
@@ -36,7 +36,19 @@ class HomeworkController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->only(['student', 'url']);
+        $validated = $request->validate([
+            'url' => 'required|max:255'
+        ]);
+
+        if ($validated) {
+            $homework = new Homework();
+            $homework->fill($data);
+            $homework->save();
+            return view('homework.index');
+        } else {
+            return view('homework.create');
+        }
     }
 
     /**

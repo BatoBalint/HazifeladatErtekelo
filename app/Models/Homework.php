@@ -13,5 +13,5 @@ class Homework extends Model
         return $this->belongsTo(User::class, 'student');
     }
 
-    protected $fillable = ['review', 'grade'];
+    protected $fillable = ['student', 'url', 'review', 'grade'];
 }
